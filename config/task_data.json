@@ -1,0 +1,18 @@
+{
+  "Fun": [
+    {
+      "content": "Run Errands"
+    },
+    {
+      "content": "Do WDI Homework"
+    }
+  ],
+  "Work": [
+    {
+      "content": "Go to Gym"
+    },
+    {
+      "content": "Make Dinner"
+    }
+  ]
+}
