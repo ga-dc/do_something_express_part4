@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-<<<<<<< HEAD
-=======
   function Task(params){
     if(params) this.data = params;
     this.render();
@@ -16,7 +14,7 @@ $(document).ready(function(){
       }
       this.view += "</li>";
     }
-  }
+  };
 
   function List(params, tasksHtml){
     if(params){
@@ -36,7 +34,7 @@ $(document).ready(function(){
       }
       this.view += "</div>";
     }
-  }
+  };
 
   var lists;
   var tasks;
@@ -49,7 +47,7 @@ $(document).ready(function(){
     return $.ajax({
       url: "/tasks",
       method: "get"
-    })
+    });
   }).then(function(response){
     var tasksHtml, task, list;
     var listsHtml = "";
@@ -59,7 +57,7 @@ $(document).ready(function(){
       tasksHtml = "";
       tasks.push({listId: list.id, content: ""});
       for(var t = 0; t < tasks.length; t++){
-        if(list.id == 0) break;
+        if(list.id === 0) break;
         task = tasks[t];
         if(task.listId != list.id) continue;
         tasksHtml += new Task(task).view;
@@ -69,7 +67,7 @@ $(document).ready(function(){
     $("main").html(listsHtml);
 
     $(".list>.create").on("click", function(){
-      var params = {title: $(this).siblings("[name=title]").val()}
+      var params = {title: $(this).siblings("[name=title]").val()};
       $.ajax({
         method: "post",
         contentType: "application/json",
@@ -98,7 +96,7 @@ $(document).ready(function(){
         contentType: "application/json",
         url: "/lists/" + id
       }).always(function(response){
-        console.dir(response)
+        console.dir(response);
         location.reload();
       });
     });
@@ -146,6 +144,5 @@ $(document).ready(function(){
     });
 
   });
->>>>>>> 49abb2d2d592cd51f242aedaa43d5d31f83f3e57
 
 });
