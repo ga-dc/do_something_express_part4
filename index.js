@@ -5,13 +5,14 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/", express.static(path.join(__dirname + "/app/assets")));
+app.use("/", express.static(path.join(__dirname + "/app/assets"))); //something asset-pipeline-y
+app.set("view engine", "hbs"); //installed node-handlebars, that didn't work so installed hbs and that did
 
 var listsController = require("./app/controllers/lists");
 var tasksController = require("./app/controllers/tasks");
 
-app.get("/", function(request, response){
-  response.sendFile(__dirname + "/app/views/index.html");
+app.get("/", function(req, res){
+  res.render("index", {}) //how to I set path to views directory
 });
 
 app.get("/routes", function(req, res){

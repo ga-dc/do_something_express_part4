@@ -11,6 +11,8 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
+    "hbs": "^3.1.0",
+    "node-handlebars": "^0.9.7",
     "pg": "^4.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.5.1"
