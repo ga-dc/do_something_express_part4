@@ -1,5 +1,5 @@
-module.exports = function(sequelize, Sequelize){
+module.exports = function(sequelize, DataTypes){
   return sequelize.define("list", {
-    title: Sequelize.STRING
+    title: DataTypes.STRING
   });
 }
