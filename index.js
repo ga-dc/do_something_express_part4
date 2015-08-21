@@ -1,15 +1,18 @@
 var express = require("express");
 var app = express();
-var path = require("path");
+var path = require("path"); //what was this for again?
 var bodyParser = require("body-parser");
-
+//------------------------------------------------
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", express.static(path.join(__dirname + "/app/assets")));
 
 var listsController = require("./app/controllers/lists");
 var tasksController = require("./app/controllers/tasks");
+//------------------------------------------------
 
+
+//ROUTES
 app.get("/", function(request, response){
   response.sendFile(__dirname + "/app/views/index.html");
 });
@@ -23,7 +26,7 @@ app.get("/routes", function(req, res){
   }
   res.send("<pre>This is just an API! No views yet. It supports these routes:\r" + output + "</pre>");
 });
-
+//------------------------------------------------
 app.use("/", listsController);
 app.use("/", tasksController);
 
