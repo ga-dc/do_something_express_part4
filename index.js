@@ -6,6 +6,7 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", express.static(path.join(__dirname + "/app/assets")));
+app.set("view engine", "hbs");
 
 var listsController = require("./app/controllers/lists");
 var tasksController = require("./app/controllers/tasks");
