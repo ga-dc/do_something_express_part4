@@ -1,6 +1,6 @@
 $(document).ready(function(){
   List.fetch().then(function(lists){
-    artists.forEach(function(artist){
+    lists.forEach(function(list){
       var view = new ListView(list);
       view.render();
     })
