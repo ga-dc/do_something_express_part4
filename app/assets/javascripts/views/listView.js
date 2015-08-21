@@ -23,18 +23,4 @@ ListView.prototype = {
     		html.append("<div class='tasks'></div>")
     		return(html)
     	}
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
 }
