@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  function List(initialTitle) {
+    this.title = title;
+  }
+
   List.prototype = {
     render: function(){
     // saving the ajax request to a local variable
