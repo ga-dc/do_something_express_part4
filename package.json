@@ -1,7 +1,7 @@
 {
   "name": "do_something",
   "version": "1.0.0",
-  "description": "",
+  "description": "For tonight's homework, add AJAX to your front-end to handle requests. That is: try to convert this application to a single-page application.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +14,14 @@
     "pg": "^4.4.1",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.5.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YvonneWang/do_something_express_part4.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YvonneWang/do_something_express_part4/issues"
+  },
+  "homepage": "https://github.com/YvonneWang/do_something_express_part4#readme"
 }
