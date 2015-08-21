@@ -17,3 +17,18 @@ List.fetch = function(){
     })
   return request
 }
+
+List.prototype.fetchTasks = function() {
+	var url = "http://localhost:3000/lists/" + this.id + "/tasks"
+	var request = $.getJSON(url)
+	.then(function(response) {
+		var tasks = []
+		for(var i = 0; i < response.length; i++) {
+			tasks.push(new Task(response[i]))
+		}
+		return tasks
+	}).fail(function(response) {
+		console.log("tasks failed to load")
+	})
+	return request
+}
