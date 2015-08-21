@@ -52,6 +52,9 @@ h2{
   line-height:36px;
   color:#789;
 }
+h5{
+  font-weight: bolder;
+}
 main{
   text-align:center;
 }
