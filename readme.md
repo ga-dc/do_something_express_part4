@@ -70,3 +70,11 @@ Add the other CRUD actions (C and U) to both models.
 ### Bonus 6:
 
 Use `history.pushState` or `window.location.hash` to update the URL to reflect the "state of the application".
+
+
+
+
+lists = List.fetch()
+lists.then(function(lists){
+  console.log(lists)
+})
