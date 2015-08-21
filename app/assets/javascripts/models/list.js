@@ -1,5 +1,6 @@
 var List = function(info) {
   this.title = info.title;
+  this.id = info.id
 };
 
 List.fetch = function() {
