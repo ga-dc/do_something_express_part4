@@ -1,10 +1,10 @@
 $(document).ready(function() {
-	$.getJSON("/lists")
-	.then(function(response) {
-			for(var i = 0; i < response.length; i++) {
-				$("main").append("<h2>" + response[i].title + "<h2>")
-			}
-		})
+  List.fetch().then(function(lists) {
+    lists.forEach(function(list) {
+      var view = new ListView(list)
+      view.render();
+    })
+  })
 });
 
 /* --------------------------------------- */
