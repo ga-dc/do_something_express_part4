@@ -1,9 +1,15 @@
 $(document).ready(function(){
 
+  //var id = $(this).siblings("[name=id]").val(); function
+  function Id(object){
+    $(object).siblings("[name=id]").val();
+  }
+  //front end Task model kind of?
   function Task(params){
     if(params) this.data = params;
     this.render();
   }
+  //These are instance methods for Task objects
   Task.prototype = {
     render: function(){
       this.view = "<li class='task'><input type='hidden' name='id' value='" + (this.data.id || "") + "' /><input type='hidden' name='listId' value='" + this.data.listId + "' /><textarea name='content'>" + (this.data.content || "") + "</textarea>";
@@ -15,7 +21,7 @@ $(document).ready(function(){
       this.view += "</li>";
     }
   }
-
+  //front end List model kind of?
   function List(params, tasksHtml){
     if(params){
       this.data = params;
@@ -23,6 +29,7 @@ $(document).ready(function(){
       this.render();
     }
   }
+  //These are instance methods for List objects
   List.prototype = {
     render: function(){
       this.view = "<div class='list'><input type='hidden' name='id' value='" + (this.data.id || "") + "' /><input type='text' name='title' value='" + (this.data.title || "") + "' />";
@@ -79,7 +86,8 @@ $(document).ready(function(){
     });
     $(".list>.save").on("click", function(){
       var params = {title: $(this).siblings("[name=title]").val()};
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
+      var id = Id(this);
       $.ajax({
         method: "patch",
         contentType: "application/json",
@@ -90,7 +98,8 @@ $(document).ready(function(){
       });
     });
     $(".list>.delete").on("click", function(){
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
+      var id = Id(this);
       $.ajax({
         method: "delete",
         contentType: "application/json",
@@ -102,7 +111,8 @@ $(document).ready(function(){
     });
 
     $(".task>.create").on("click", function(){
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
+      var id = Id(this);
       var listId = $(this).siblings("[name=listId]").val();
       var params = {
         content: $(this).siblings("[name=content]").val()
@@ -117,7 +127,8 @@ $(document).ready(function(){
       });
     });
     $(".task>.save").on("click", function(){
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
+      var id = Id(this);
       var listId = $(this).siblings("[name=listId]").val();
       var params = {
         content: $(this).siblings("[name=content]").val()
@@ -132,7 +143,8 @@ $(document).ready(function(){
       });
     });
     $(".task>.delete").on("click", function(){
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
+      var id = Id(this);
       var listId = $(this).siblings("[name=listId]").val();
       $.ajax({
         method: "delete",
