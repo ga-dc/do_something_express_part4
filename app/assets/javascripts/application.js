@@ -7,8 +7,6 @@ $(document).ready(function(){
     url: "/lists",
     method: "get"
   }).then(function(lists){
-
-    // lists.push({title: ""});
     for(var i=0; i<lists.length; i++) {
       var list = lists[i]
       console.log(list.title)
