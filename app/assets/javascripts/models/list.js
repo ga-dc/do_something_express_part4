@@ -3,7 +3,6 @@ var List = function(info) {
 	this.id = info.id
 }
 
-
 /* EXAMPLE:
 var Artist = function(info){
   this.name = info.name;
