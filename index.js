@@ -28,9 +28,9 @@ app.use("/", listsController);
 app.use("/", tasksController);
 
 // The process.env.PORT is for deployment to Heroku. Don't worry about it! You can have the usual:
-/*
+
 app.listen(3000, function(){
-*/
-app.listen(process.env.PORT || 3000, function(){
+
+// app.listen(process.env.PORT || 3000, function(){
   console.log("Listening on port 3000");
 });
