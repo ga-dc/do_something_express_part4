@@ -1,19 +1,16 @@
 $(document).ready(function(){
 
-  var List = function(info){
+  function List(info){
   this.title = info.title;
   this.id = info.id;
-
-  this.init = function() {
-    this.removeList();
-  }
-
   };
 
   var Task = function(info){
   this.content = info.content;
   this.id = info.id;
   };
+
+  var html = $("main");
 
   $.ajax({
     url: "/lists",
@@ -24,55 +21,43 @@ $(document).ready(function(){
       lists.push(new List(response[i]));
     }
     return lists.forEach(function(list){
-      var html = $("main");
       html.append("<h5>Lists: " + list.title + "</h5>");
       html.append("<button class='deleteList'>Delete List</button>")
 
-     var deleteButton = this.$(".deleteList");
-        deleteButton.on("click", function() {
-          console.log("click fired")
-          // make sure it's a <li> that gets removed
-            this.list.destroy().then(function(){ this.deleteButton.fadeOut()});
-        }.bind(this));
+      var deleteButton = $(".deleteList")
+      console.log("the delete button is" + deleteButton)
+      deleteButton.on("click", function(){
+        console.log("click fired")
+        console.log("list id is " + list.id)
+        //var listId = list.id;
+        $.ajax({
+          method: "delete",
+          contentType: "application/json",
+          url: "/lists/" + listId,
+        }).always(function(){
+          //location.reload();
+        });
+      });
 
-      return(html);
+      });
 
-     });
-    })
-    .fail(function(response){
+  }).fail(function(response){
       console.log("js failed to load");
-    });
+  });
 
-    List.prototype = {
-      destroy: function(listData) {
-      console.log("deleteeee")
-      var self = this;
-
-      var url = "http://localhost:3000/lists/" + this.id;
-      var request = $.ajax({
-        url: url,
-        method: "delete",
-      });
-      return request;
-      }
+  $.ajax({
+    url: "/tasks",
+    method: "get"
+  }).then(function(response) {
+    var tasks = [];
+    for(var i = 0; i < response.length; i++){
+      tasks.push(new Task(response[i]));
     }
-
-    $.ajax({
-      url: "/tasks",
-      method: "get"
-    }).then(function(response) {
-      var tasks = [];
-      for(var i = 0; i < response.length; i++){
-        tasks.push(new Task(response[i]));
-      }
-      return tasks.forEach(function(task){
-        var html = $("main");
-        html.append("<p>" + task.content + "</p>");
-        return(html);
-       });
-      })
-      .fail(function(response){
-        console.log("js failed to load");
-      });
+    return tasks.forEach(function(task){
+      html.append("<p>" + task.content + "</p>");
+    });
+  }).fail(function(response){
+    console.log("js failed to load");
+  });
 
 });
