@@ -3,6 +3,11 @@ $(document).ready(function(){
   var List = function(info){
   this.title = info.title;
   this.id = info.id;
+
+  this.init = function() {
+    this.removeList();
+  }
+
   };
 
   var Task = function(info){
@@ -21,12 +26,36 @@ $(document).ready(function(){
     return lists.forEach(function(list){
       var html = $("main");
       html.append("<h5>Lists: " + list.title + "</h5>");
+      html.append("<button class='deleteList'>Delete List</button>")
+
+     var deleteButton = this.$(".deleteList");
+        deleteButton.on("click", function() {
+          console.log("click fired")
+          // make sure it's a <li> that gets removed
+            this.list.destroy().then(function(){ this.deleteButton.fadeOut()});
+        }.bind(this));
+
       return(html);
+
      });
     })
     .fail(function(response){
       console.log("js failed to load");
     });
+
+    List.prototype = {
+      destroy: function(listData) {
+      console.log("deleteeee")
+      var self = this;
+
+      var url = "http://localhost:3000/lists/" + this.id;
+      var request = $.ajax({
+        url: url,
+        method: "delete",
+      });
+      return request;
+      }
+    }
 
     $.ajax({
       url: "/tasks",
