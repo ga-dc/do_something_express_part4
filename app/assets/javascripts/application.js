@@ -49,6 +49,9 @@ $(document).ready(function(){
       method: "get"
     })
   }).then(function(response){
+
+    var id = $(this).siblings("[name=id]").val();  //======added
+
     var tasksHtml, task, list;
     var listsHtml = "";
     tasks = response;
@@ -79,7 +82,7 @@ $(document).ready(function(){
     });
     $(".list>.save").on("click", function(){
       var params = {title: $(this).siblings("[name=title]").val()};
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
       $.ajax({
         method: "put",
         contentType: "application/json",
@@ -90,7 +93,7 @@ $(document).ready(function(){
       });
     });
     $(".list>.delete").on("click", function(){
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
       $.ajax({
         method: "delete",
         contentType: "application/json",
@@ -102,7 +105,7 @@ $(document).ready(function(){
     });
 
     $(".task>.create").on("click", function(){
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
       var listId = $(this).siblings("[name=listId]").val();
       var params = {
         content: $(this).siblings("[name=content]").val()
@@ -117,7 +120,7 @@ $(document).ready(function(){
       });
     });
     $(".task>.save").on("click", function(){
-      var id = $(this).siblings("[name=id]").val();
+      // var id = $(this).siblings("[name=id]").val();
       var listId = $(this).siblings("[name=listId]").val();
       var params = {
         content: $(this).siblings("[name=content]").val()
