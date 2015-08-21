@@ -1,5 +1,5 @@
 var Sequelize = require("sequelize");
-var sequelize = new Sequelize("postgres:///do_something");
+var sequelize = new Sequelize("postgres:///do_something_db");
 var List = sequelize.import("../app/models/list");
 var Task = sequelize.import("../app/models/task");
 
