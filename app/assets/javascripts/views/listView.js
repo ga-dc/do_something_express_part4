@@ -1,11 +1,13 @@
 var ListView = function(list){
   this.list = list;
-  this.$el = $("<div class='list'></div>")
+  this.$el = $("<div class='list"+this.list.id+"'></div>")
 };
 
 ListView.prototype.render = function(){
+  console.log("rendering");
   var self = this;
-  self.$el.html(self.listTemplate(self.list))
+  self.$el.html(self.listTemplate(self.list));
+
   $(".lists").append(self.$el)
 
 }
