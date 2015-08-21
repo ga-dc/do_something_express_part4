@@ -16,7 +16,7 @@ ListView.prototype = {
   },
   listTemplate: function(list){
     var html = $("<div>");
-    html.append("<h3>" + list.title + "</h3>");
+    html.append("<h2>" + list.title + "</h2>");
     return(html);
   }
 }
