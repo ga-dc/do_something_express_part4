@@ -64,4 +64,44 @@ router.post("/lists/:listId/tasks", function(req, res){
   });
 });
 
+router.get("/lists/:listId/tasks/:id", function(req, res) {
+  List.findById(req.params.listId)
+  .then(function(list) {
+    if(!list) return error(res, "not found");
+    return list.getTasks();
+  })
+  .then(function(tasks) {
+    for(var i in tasks) {
+      // doesn't respond with an error
+      if(!tasks[i]) {return error(res, "not found")}
+      if( tasks[i].dataValues.id == req.params.id) {
+        res.json(tasks[i]);
+      }
+    }
+  })
+})
+
+router.delete("/lists/:listId/tasks/:id", function(req, res) {
+  List.findById(req.params.listId)
+  .then(function(list) {
+    if(!list) return error(res, "not found");
+    return list.getTasks();
+  })
+  .then(function(tasks) {
+    for(var i in tasks) {
+      if(!tasks[i]) {return error(res, "not found")}
+      if( tasks[i].dataValues.id == req.params.id) {
+        tasks[i].destroy().then(function() {
+          res.json({ success: true});
+        });
+      }
+    }
+  })
+})
+
+
+// task.destroy().then(function(){
+//   res.json({succes: true});
+// });
+
 module.exports = router;

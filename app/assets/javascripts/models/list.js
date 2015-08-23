@@ -4,23 +4,23 @@ var List = function(info) {
 };
 
 List.fetch = function() {
-  var request = $.getJSON("http://localhost:3000/lists")
+  var request = $.getJSON("/lists")
   .then(function(response) {
     var lists = [];
-    for(var i = 0; i < response.length; i++ ) {
+    for(var i in response ) {
       lists.push(new List(response[i]));
     }
     return lists;
   })
   .fail(function(response) {
-    console.log("js failed to load");
+    console.log("Fail to fetch lists");
   });
   return request;
 };
 
 List.prototype = {
   fetchTasks: function() {
-    var url = "http://localhost:3000/lists" + this.id + "/tasks";
+    var url = "/lists/" + this.id + "/tasks";
     var request = $.getJSON(url)
     .then(function(response) {
       var tasks = [];
@@ -30,7 +30,7 @@ List.prototype = {
       return tasks;
     })
     .fail(function(response) {
-      console.log("js failed to load");
+      console.log("Failed to fetch tasks");
     });
     return request;
   },
@@ -42,7 +42,6 @@ List.prototype = {
       url: url,
       method: "patch",
       data: JSON.stringify(listData),
-      // what is that?
       contentType: 'application/json'
     })
     .then(function(updatedListInfo) {self.reload(updatedListInfo);}

@@ -3,18 +3,17 @@ var ListView = function(list) {
 
   this.$el = $('<div class="list"></div>');
   this.render();
-
-  $('.lists').append(this.$el);
+  $(".lists").append(this.$el);
 };
 
 ListView.prototype = {
   render: function() {
     var self = this;
-    self.$el.html(self.listTemplate(self.ListView));
+    this.$el.html(this.listTemplate(this.list));
 
-    var showButton = self.$el.find('.showTasks');
-    var editButton = self.$el.find('.editTask');
-    var tasksDiv = self.$el.find('div.tasks');
+    var showButton = this.$el.find('.showTasks');
+    var editButton = this.$el.find('.editList');
+    var tasksDiv = this.$el.find('div.tasks');
 
     tasksDiv.hide();
 
@@ -22,8 +21,8 @@ ListView.prototype = {
       self.toggleTasks(tasksDiv);
     });
     editButton.on('click', function() {
-      self.renderEditForm;
-    })
+      self.renderEditForm();
+    });
   },
   renderEditForm: function() {
     var self = this;
@@ -32,6 +31,10 @@ ListView.prototype = {
 
     this.$el.find('.updateList').on('click', function() {
       self.updateList();
+    });
+
+    this.$el.find('.deleteList').on('click', function() {
+      self.list.destroy().then(function() {self.$el.fadeOut()});
     });
   },
   toggleButton: function(tasksDiv) {
@@ -61,13 +64,11 @@ ListView.prototype = {
   updateList: function() {
     var self = this;
     var data = { title: self.$el.find('input[name=title]').val() };
-    selt.list.update(data).then(function() { self.render(); });
+    self.list.update(data).then(function() { self.render(); });
   },
   listTemplate: function(list) {
-    console.log("listTemplate")
-    console.log(list)
-    var html = $('<div>');
-    html.append("<h3>" + list.title + "</div>");
+    var html = $("<div>");
+    html.append("<h3>" + list.title + "</h3>");
     html.append("<button class='showTasks'>Show Tasks</button>");
     html.append("<button class='editList'>Edit List</button>");
     html.append("<div class='tasks'></div>");
