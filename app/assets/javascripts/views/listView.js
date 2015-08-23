@@ -4,7 +4,7 @@ var ListView = function(list){
   this.$el = $("<div class='list'></div>");
   this.render();
 
-  $(".lists").append(this.$el);
+  $("main").append(this.$el);
 };
 
 ListView.prototype = {
