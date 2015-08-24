@@ -1,5 +1,7 @@
-module.exports = function(sequelize, Sequelize){
+module.exports = function(sequelize, DataTypes){
   return sequelize.define("task", {
-    content: Sequelize.TEXT
+    body: DataTypes.STRING,
+    complete: DataTypes.BOOLEAN,
+    listId: DataTypes.INTEGER
   });
 }

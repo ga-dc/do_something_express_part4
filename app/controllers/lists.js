@@ -26,7 +26,7 @@ router.get("/lists/:id", function(req, res){
   });
 });
 
-router.put("/lists/:id", function(req, res){
+router.patch("/lists/:id", function(req, res){
   List.findById(req.params.id)
   .then(function(list){
     if(!list) return error(res, "not found");

@@ -1,0 +1,112 @@
+{
+    "Yeah Yeah Yeahs" : [
+        {
+            "body": "Maps",
+            "complete": false
+        },
+        {
+            "body": "Heads Will Roll",
+            "complete": false
+        },
+        {
+            "body": "Gold Lion",
+            "complete": false
+        },
+        {
+            "body": "Sacrilege",
+            "complete": false
+        },
+        {
+            "body": "Zero",
+            "complete": false
+        }
+    ],
+    "Nosaj Thing": [
+        {
+            "body": "Aquarium",
+            "complete": false
+        },
+        {
+            "body": "Coat of Arms",
+            "complete": true
+        },
+        {
+            "body": "Fog",
+            "complete": false
+        },
+        {
+            "body": "Try (feat. Toro y Moi)",
+            "complete": true
+        },
+        {
+            "body": "Quest",
+            "complete": false
+        }
+    ],
+    "Norah Jones": [
+        {
+            "body": "Don't Know Why",
+            "complete": false
+        },
+        {
+            "body": "Come Away With Me",
+            "complete": true
+        },
+        {
+            "body": "Turn Me On",
+            "complete": false
+        },
+        {
+            "body": "Peace",
+            "complete": true
+        },
+        {
+            "body": "Sunrise",
+            "complete": false
+        }
+    ],
+    "Lykke Li": [
+        {
+            "body": "I Follow Rivers",
+            "complete": true
+        },
+        {
+            "body": "Little Bit",
+            "complete": true
+        },
+        {
+            "body": "Possibility",
+            "complete": false
+        },
+        {
+            "body": "Get Some",
+            "complete": true
+        },
+        {
+            "body": "I Follow Rivers (The Magician Remix)",
+            "complete": false
+        }
+    ],
+    "Kendrick Lamar": [
+        {
+            "body": "m.A.A.d city (feat. MC Eiht)",
+            "complete": false
+        },
+        {
+            "body": "Swimming Pools (Drank)",
+            "complete": false
+        },
+        {
+            "body": "Bitch, Don’t Kill My Vibe (feat. JAY Z)",
+            "complete": true
+        },
+        {
+            "body": "Poetic Justice (feat. Drake)",
+            "complete": true
+        },
+        {
+            "body": "Money Trees (feat. Jay Rock)",
+            "complete": false
+        }
+    ]
+}

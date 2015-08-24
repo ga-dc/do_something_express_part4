@@ -7,8 +7,8 @@ Task.belongsTo(List);
 List.hasMany(Task);
 
 module.exports = {
-  Sequelize: Sequelize,
-  sequelize: sequelize,
+  sql: Sequelize,
+  do: sequelize,
   models: {
     List: List,
     Task: Task
