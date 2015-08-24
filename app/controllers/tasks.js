@@ -22,7 +22,7 @@ router.get("/tasks/:id", function(req, res){
   });
 });
 
-router.put("/tasks/:id", function(req, res){
+router.patch("/tasks/:id", function(req, res){
   Task.findById(req.params.id).then(function(task){
     if(!task) return error(res, "not found");
     task.updateAttributes(req.body).then(function(updateTask){
@@ -81,7 +81,7 @@ router.get("/lists/:listId/tasks/:id", function(req, res) {
   })
 })
 
-router.delete("/lists/:listId/tasks/:id", function(req, res) {
+router.patch("/lists/:listId/tasks/:id", function(req, res) {
   List.findById(req.params.listId)
   .then(function(list) {
     if(!list) return error(res, "not found");
@@ -91,17 +91,28 @@ router.delete("/lists/:listId/tasks/:id", function(req, res) {
     for(var i in tasks) {
       if(!tasks[i]) {return error(res, "not found")}
       if( tasks[i].dataValues.id == req.params.id) {
-        tasks[i].destroy().then(function() {
-          res.json({ success: true});
+        tasks[i].updateAttributes(req.body).then(function(updateTask){
+          res.json(updateTask);
         });
       }
     }
   })
 })
 
-
-// task.destroy().then(function(){
-//   res.json({succes: true});
-// });
+router.delete("/lists/:listId/tasks/:id", function(req, res) {
+  List.findById(req.params.listId)
+  .then(function(list) {
+    if(!list) return error(res, "not found");
+    return list.getTasks();
+  })
+  .then(function(tasks) {
+    Task.findById(req.params.id).then(function(task){
+      if(!task) return error(res, "not found");
+      task.destroy().then(function(){
+        res.json({succes: true});
+      });
+    });
+  })
+})
 
 module.exports = router;

@@ -105,7 +105,7 @@ button:not(.create){
 }
 button:not(.create):nth-of-type(odd){
   border-bottom-right-radius:0px;
-  border-right-color:transparent;
+  /*border-right-color:transparent;*/
 }
 button:not(.create):nth-of-type(even){
   border-bottom-left-radius:0px;

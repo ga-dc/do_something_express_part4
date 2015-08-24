@@ -18,7 +18,7 @@ TaskView.prototype = {
     editIcon.on('click', function() {
       self.renderEditForm();
     });
-    
+
     return this.$el;
   },
   renderEditForm: function() {
@@ -29,13 +29,16 @@ TaskView.prototype = {
     var deleteIcon = this.$el.find(".fa.fa-trash-o");
 
     saveIcon.on('click', function() {
-      console.log('save icon click')
+      self.updateTask();
     })
     deleteIcon.on('click', function() {
       self.task.destroy().then(function() { self.$el.fadeOut()});
     })
-
-    console.log($el);
+  },
+  updateTask: function() {
+    var self = this;
+    var data = { body: self.$el.find('input[name=body]').val() };
+    this.task.update(data).then( function() {self.render() });
   },
   taskTemplate: function(task) {
     var html = $("<div>");

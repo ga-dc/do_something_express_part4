@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="javascripts/models/list.js"></script>
     <script src="javascripts/views/listView.js"></script>
+    <script src="javascripts/views/newListView.js"></script>
     <script src="javascripts/models/task.js"></script>
     <script src="javascripts/views/taskView.js"></script>
     <script src="javascripts/application.js"></script>
@@ -20,8 +21,15 @@
       <!-- <h2>A swiggity-swankity super-dooper list-making app that is completely unlike Trello. No-no, not a all.</h2> -->
     </header>
     <main>
-      <div class="lists">
+      <div class="newListView">
+        <button class="addList">Add List</button>
+        <form class="newList">
+          <input id='newList' name='title' placeholder="list title">
+          <br />
+          <button class='createList'>Create List</button>
+        </form>
       </div>
+      <div class="lists"></div>
     </main>
   </body>
 </html>

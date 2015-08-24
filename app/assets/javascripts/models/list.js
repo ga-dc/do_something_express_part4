@@ -18,13 +18,29 @@ List.fetch = function() {
   return request;
 };
 
+List.create = function(listData) {
+  var self = this;
+  console.log(listData)
+  var url = "/lists";
+  var request = $.ajax({
+    url: url,
+    method: "post",
+    data: JSON.stringify(listData),
+    contentType : 'application/json'
+  }).then(function(listData) {
+    console.log(listData)
+    return new List(listData);
+  });
+  return request;
+};
+
 List.prototype = {
   fetchTasks: function() {
     var url = "/lists/" + this.id + "/tasks";
     var request = $.getJSON(url)
     .then(function(response) {
       var tasks = [];
-      for(var i = 0; i < response.length; i++ ) {
+      for(var i in response) {
         tasks.push(new Task(response[i]));
       }
       return tasks;
